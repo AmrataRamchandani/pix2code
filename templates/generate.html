@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- <link rel="icon" type="image/png" sizes="310x310" href="../static/images/fav1.png"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>pix2code
+    </title>
+    <!-- Included Bootstrap CSS Files -->
+    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"  >
+    <script src="../static/js/jquery 2.2.4.min.js"></script>
+    <script src="../static/js/bootstrap.min.js"></script>
+  </head>
+  <!-- #027d7d -->
+  <style>
+    body{
+    overflow-x: hidden;
+    /* overflow-y: hidden */
+    }
+    #header{
+    border-style: solid;
+    border-width: 0 2px 0px 0;
+    background-color: #378898 ;
+    height:100vh;
+    padding-left: 3%;
+    margin-right:0;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    }
+    .title{
+    font-size: 40px;
+    font-family:"Courier New", Courier, monospace;
+    color:#333
+    }
+    .footer {
+    position: fixed;
+    right: 20px;
+    bottom: 0;
+    font-size: 15px;
+    color:white;
+    }
+    #secondhalf{
+    height:100vh;
+    background-color:#000;
+    color: white;
+    overflow-y: auto;
+overflow-x: hidden;
+margin-left: 0
+    }
+    .imgdisplay{
+    height:450px;
+    width:630px;
+    border:5px;
+    border-style: solid;
+    border-color:#525252;
+    }
+    #imgpath{
+      display: none;
+    }
+  </style>
+  <body>
+    <div  class="col-lg-6" id=header>
+      <div class="row" style="font-size:18px;color:#000;  margin-top: 1%">
+        <div class="row"  style="margin-top:2%;">
+          <div style="float:left;margin-left:0%;">
+            {% if inpimg%}
+            <img src={{inpimg}} class=imgdisplay id="imgd">
+            {% else %}
+            <img src="static/images/test1.png" class=imgdisplay >
+            {% endif %}
+          </div>
+          <div class="wrapper">
+
+</div>
+
+        </div>
+        <p style="margin-top:1%;margin-left:46.5%;font-size:13px;font-weight:bold"> Or </p>
+        <label >Generate HTML Code for your image</label>
+        <form id="upload-form" action="{{url_for('upload')}}" method="POST" onsubmit="return checkform()" enctype="multipart/form-data">
+
+          <input id="file-picker" type="file" onchange="readURL(this);" name="file" accept="image/*" style="font-size:13px" >
+          <p id="msg" style="font-size:13px;color:red">Supported file formats: jpeg/jpg/png </p>
+          <input type="text" name="imgpath" id="imgpath">
+
+            <input type="submit" value="Generate !" class="btn btn-danger btn-sm" id="answer" style="margin-top: 1%;margin-left:42%">
+          <script>
+          function checkform() {
+                var input = document.getElementById('file-picker');
+                if (input.files.length == 0) {
+                  var imgsrc = document.getElementsByClassName("imgdisplay")[0].src;
+                  document.getElementById("imgpath").value = imgsrc;
+                }
+                for (var i = 0; i < input.files.length; i++) {
+                  var ext = input.files[i].name.substring(input.files[i].name.lastIndexOf('.') + 1).toLowerCase()
+                  if ((ext == 'jpg') || (ext == 'png') || (ext == 'jpeg')) {} else {
+                    $("#msg").text("Submitted file format is not supported")
+                    document.getElementById("file-picker").value = "";
+                    return false;
+                  }
+                }
+                }
+                function readURL(input) {
+                if (input.files && input.files[0]) {
+                  var reader = new FileReader();
+                  reader.onload = function (e) {
+                    $('.imgdisplay')
+                      .attr('src', e.target.result)
+                  };
+                  reader.readAsDataURL(input.files[0]);
+                }
+            }
+          </script>
+      </div>
+    </div>
+    <div  class="col-lg-6" id="secondhalf">
+      <a class="btn btn-danger btn-xs pull-right " onclick="myFunc();">View in Browser</a>
+      <script>
+      function myFunc() {
+        {% if pcode%}
+
+      window.open('/dview',width=400,height=600)
+
+      {% else %}
+  window.open('/view')
+      {% endif %}
+}
+  </script>
+
+
+    <div style="margin-top:2%;">
+
+    <div class="col-lg-10" >
+      {% if pcode%}
+      {% for line in pcode.splitlines()%}
+      <p style="color:#f5f2d0" >{{line}}</p>
+     {% endfor %}
+    {% else %}
+
+<xmp style="margin:0;color:#f5f2d0">
+<html>
+<header>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/
+bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYii
+SIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/
+bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384
+-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl
+/Sp" crossorigin="anonymous">
+<style>
+.header{margin:20px 0}nav ul.nav-pills li{background-color:#333;
+border-radius:4px;margin-right:10px}.col-lg-3{width:24%;margin-
+right:1.333333%}.col-lg-6{width:49%;margin-right:2%}.col-lg-12,
+.col-lg-3,.col-lg-6{margin-bottom:20px;border-radius:6px;backgr
+ound-color:#f5f5f5;padding:20px}.row .col-lg-3:last-child,.row
+.col-lg-6:last-child{margin-right:0}footer{padding:20px 0;text-
+align:center;border-top:1px solid #bbb}
+</style>
+<title>pix2code</title>
+</header>
+<body>
+<main class="container">
+<div class="header clearfix">
+<nav>
+<ul class="nav nav-pills pull-left">
+<li><a href="#">Najyd Djrt</a></li>
+<li><a href="#">Uik Kndxmi</a></li>
+<li class="active"><a href="#">Avm Mblztc</a></li>
+</ul>
+</nav>
+</div>
+<div class="row"><div class="col-lg-6">
+<h4>Qqvew</h4><p>rbw yupik l ickbpizezihvnmsuckvqhqyvjsg d rrzz
+s ducpmbi
+</p>
+<a class="btn btn-success" href="#" role="button">Izuyqs Skb</a>
+</div>
+<div class="col-lg-6">
+<h4>Abxcb</h4><p>usdthyzaprorizpeqoaoq tuy f rftgap viu gthvqdsr
+gdydqngxg
+</p>
+<a class="btn btn-danger" href="#" role="button">Prpqct Txy</a>
+</div>
+</div>
+<footer class="footer">
+<p>&copy; Tony Beltramelli 2017</p>
+</footer>
+</main>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</body>
+</html>
+</xmp style="margin-bottom:1%">
+      {% endif %}
+    </div>
+  <!-- </iframe> -->
+    </form>
+    </div>
+    <p class="footer">Handcrafted with <span class="glyphicon glyphicon-heart" style="color:red"></span> yours truly</p>
+    </div>
+  </body>
+</html>

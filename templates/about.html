@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- <link rel="icon" type="image/png" sizes="310x310" href="../static/images/fav1.png"> -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <title>pix2code</title>
+      <!-- Included Bootstrap CSS Files -->
+      <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"  >
+      <link rel="stylesheet" type="text/css" href="../static/css/jquery.carousel.fullscreen.css" >
+      <script src="../static/js/jquery 2.2.4.min.js"></script>
+      <script src="../static/js/bootstrap.min.js"></script>
+      <!-- Just include this Js file -->
+      <script src="../static/js/jquery.carousel.fullscreen.js"></script>
+      <style>
+         /* Fonts */
+         @font-face {
+         font-family: 'Fredericka the Great';
+         font-style: normal;
+         font-weight: 400;
+         src: url('../static/fonts/FrederickatheGreat-Regular.ttf');
+         unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+         }
+         .nav>li>a {
+         border: 4px solid white;
+         background-color: transparent;
+         color:white;
+         }
+         .navbar,.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+         background-color:black;
+         border-color:transparent;
+         height:21%;
+         }
+         .navbar-inverse .navbar-brand ,.navbar-inverse .navbar-nav>li>a {
+         color:#fff;
+         }
+         .footer{
+         color:white;
+
+
+         }
+      </style>
+   </head>
+   <body>
+      <nav class="navbar navbar-inverse navbar-fixed-bottom">
+         <div class="container-fluid">
+            <div class="navbar-header">
+               <button type="button" class="navbar-toggle" onclick="toggle_visibility('brand')"
+                  data-toggle="collapse" data-target="#myNavbar" >
+               <span class="icon-bar" >
+               </span>
+               <span class="icon-bar">
+               </span>
+               <span class="icon-bar">
+               </span>
+               </button>
+               <a class="navbar-brand " href="/generate" id="brand" style="margin-top: 3%;margin-left: 104%;font-family: 'Fredericka the Great', cursive;font-size: 100px;">
+           pix2code
+               </a>
+
+            </div>
+              <p style="color:white;margin-top:7%;margin-left:48%">Automating Front-End Development</p>
+
+<p style="color:white;margin-left:50.5%;">Handcrafted with <span class="glyphicon glyphicon-heart" style="color:red"></span> yours truly</p>
+
+
+
+         </div>
+      </nav>
+      <video width="100%" height="500" controls>
+  <source src="./static/images/coderunthrough.mp4" type="video/mp4">
+
+</video>
+
+   </body>
+</html>
